@@ -7,10 +7,6 @@ public class ZoomCardFilling : MonoBehaviour
 {
     public Image Logo;
     public Sprite test;
- 
-
-
-
     private void Start()
     {
         Logo = GetComponent<Image>();
