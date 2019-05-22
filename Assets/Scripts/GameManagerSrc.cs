@@ -26,7 +26,7 @@ public class Game
     {
         List<Card> list = new List<Card>();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 2; i++)
             list.Add(ChoseCard.selectedCards[Random.Range(0, ChoseCard.selectedCards.Count)]);
         return list;
     }
@@ -62,7 +62,7 @@ public class GameManagerSrc : MonoBehaviour
     void GiveHandCards(List<Card> deck, Transform hand)
     {
         int i = 0;
-        while (i++ < 5)
+        while (i++ < 1)
             GiveCardToHand(deck, hand);
     }
 
@@ -75,10 +75,11 @@ public class GameManagerSrc : MonoBehaviour
 
         GameObject cardGO = Instantiate(CardPref, hand, false);
 
-        if (hand == EnemyHand)
-            cardGO.GetComponent<CardInfoSrc>().HideCardInfo(card);
+        if (hand == EnemyHand) {
+            cardGO.GetComponent<CardGiven>().HideCardInfo(card);
+        }
         else
-            cardGO.GetComponent<CardInfoSrc>().ShowCardInfo(card);
+            cardGO.GetComponent<CardGiven>().ShowCardInfo(card);
 
         deck.RemoveAt(0);
     }

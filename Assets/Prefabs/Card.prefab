@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6423839523136515117}
   - component: {fileID: 6423839523136515116}
   - component: {fileID: 6423839523136515119}
-  - component: {fileID: 6423839523136515107}
+  - component: {fileID: 8467489895429442872}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -178,12 +178,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultParent: {fileID: 0}
   DefaultTempCardParent: {fileID: 0}
-  flag: 0
-  ZoomLogo: {fileID: 0}
   temp: {fileID: 0}
   zoomCardFilling: {fileID: 0}
   IsDraggable: 0
---- !u!114 &6423839523136515107
+--- !u!114 &8467489895429442872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,7 +190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6423839523136515113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34bc5de76764b2743a9da64865558283, type: 3}
+  m_Script: {fileID: 11500000, guid: afb5b836a7e00e949856a9b0a8d1ea4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 6423839521970950102}
