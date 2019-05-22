@@ -7,22 +7,24 @@ public class CardInfoSrc : MonoBehaviour
 {
     public Card SelfCard;
     public Image image = null;
+    public Text Thp, TDef, Tattack, Tlead, Tcost, Tupkeep;
 
     public void ShowCardInfo(Card card)
     {
+        image.sprite = card.Logo;
         SelfCard = card;
-        image.GetComponent<Image>().sprite = card.Logo;
+        Thp.text = card.HP.ToString();
+        TDef.text = card.Defense.ToString();
+        Tattack.text = card.Attack.ToString();
+        Tlead.text = card.Leader.ToString();
+        Tcost.text = card.Cost.ToString();
+        Tupkeep.text = card.Upkeep.ToString();
         image.preserveAspect = true;
     }
 
     private void Start()
     {
-        // ShowCardInfo(CardManager.AllCards[0]);
-        ShowCardInfo(CardManager.AllCards[transform.GetSiblingIndex()]);       //  show enemy cards
-        /*foreach(Card element in CardManager.AllCards)
-        {
-            ShowCardInfo(CardManager.AllCards[element.ID]);
-        }*/
+        ShowCardInfo(CardManager.AllCards[transform.GetSiblingIndex()]);     
     }
 
     public void HideCardInfo(Card card)
