@@ -3,20 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
-public class ChoseCard : MonoBehaviour , IPointerClickHandler
+public static class ChosenCards
+{
+    public static List<Card> selectedCards = new List<Card>();
+}
+public class ChoseCard : MonoBehaviour, IPointerClickHandler
 {
     public Image Hp, Defense, Attack, Leader, Cost, Upkeep, Skills;
     public Text Thp, TDef, Tattack, Tlead, Tcost, Tupkeep;
     public Image choseCard;
-    public static List<Card> selectedCards = new List<Card>();
+    public int ID;
+
     public void OnPointerClick(PointerEventData eventData)
     {
+        ID = GetComponent<CardInfoSrc>().ID;       
+        Debug.Log("Test" + ChosenCards.selectedCards.Count);
+        Debug.Log("ID" + ID);
         foreach(Card element in CardManager.AllCards)
         {
-            if(element.Logo == choseCard.sprite)
+            if(element.ID == ID && choseCard.sprite != Resources.Load<Sprite>("Cards/BG/BackgroundForEmpire"))           
             {
-                selectedCards.Add(new Card(element.ID, element.Name, element.LogoPath, element.HP, 
+                ChosenCards.selectedCards.Add(new Card(element.ID, element.Name, element.LogoPath, element.HP, 
                                         element.Defense, element.Attack, element.Leader, element.Cost, 
                                         element.Upkeep, element.Status));
 

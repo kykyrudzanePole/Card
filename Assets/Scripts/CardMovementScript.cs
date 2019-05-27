@@ -110,5 +110,5 @@ public class CardMovementScript : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         flag = false;
     }
-       // ---------------------------------- Запитати Захара про створення нової карточки
+    
 }

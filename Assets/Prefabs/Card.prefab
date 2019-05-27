@@ -792,6 +792,9 @@ GameObject:
   - component: {fileID: 6423839523136515116}
   - component: {fileID: 6423839523136515119}
   - component: {fileID: 8467489895429442872}
+  - component: {fileID: 6731520307609974622}
+  - component: {fileID: 7175293606954317739}
+  - component: {fileID: 8582852161487096978}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -839,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.009433985, g: 0.008855485, b: 0.008855485, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -898,12 +901,72 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 6423839521970950102}
-  Thp: {fileID: 0}
-  TDef: {fileID: 0}
-  Tattack: {fileID: 0}
-  Tlead: {fileID: 0}
-  Tcost: {fileID: 0}
-  Tupkeep: {fileID: 0}
+--- !u!114 &6731520307609974622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6423839523136515113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dbe832b5a9daa246892f40c42cdae64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Explosion: {fileID: 139099706855780660, guid: dc2131efb5fe3944cb053be657d690f8,
+    type: 3}
+  clonePos: {fileID: 0}
+  speed: 500
+  bullet: {fileID: 6423839523136515113}
+  BG: {fileID: 4463592372405537447, guid: fb2ab6d929948c34ab936e0ef694276e, type: 3}
+  trigger: 0
+--- !u!61 &7175293606954317739
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6423839523136515113}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &8582852161487096978
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6423839523136515113}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &6802328315223170562
 GameObject:
   m_ObjectHideFlags: 0

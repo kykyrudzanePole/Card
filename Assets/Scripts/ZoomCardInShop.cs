@@ -9,6 +9,7 @@ public class ZoomCardInShop : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public static bool flag;
     public static Sprite ZoomLogo;
     public Image temp;
+    public static int ID;
     public ZoomCardFillingForShop zoomCardFillingForShop;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class ZoomCardInShop : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        ID = GetComponent<CardInfoSrc>().ID;
         flag = true;
         temp = transform.GetChild(0).GetComponentInChildren<Image>();
         ZoomLogo = temp.sprite;

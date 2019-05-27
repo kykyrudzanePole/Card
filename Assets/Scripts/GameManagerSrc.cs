@@ -27,7 +27,7 @@ public class Game
         List<Card> list = new List<Card>();
 
         for (int i = 0; i < 2; i++)
-            list.Add(ChoseCard.selectedCards[Random.Range(0, ChoseCard.selectedCards.Count)]);
+            list.Add(ChosenCards.selectedCards[Random.Range(0, ChosenCards.selectedCards.Count)]);
         return list;
     }
 }
@@ -40,6 +40,9 @@ public class GameManagerSrc : MonoBehaviour
     int turn, turnTime = 30;
     public TextMeshProUGUI turnTimeTxt;
     public Button endTurnButton;
+    public GameObject preview;
+    public GameObject previewInGame;
+    public static int a = 300, b = 250, c = 0;
 
     public bool isPlayerTurn
     {
@@ -62,7 +65,7 @@ public class GameManagerSrc : MonoBehaviour
     void GiveHandCards(List<Card> deck, Transform hand)
     {
         int i = 0;
-        while (i++ < 1)
+        while (i++ < 3)
             GiveCardToHand(deck, hand);
     }
 
@@ -75,12 +78,19 @@ public class GameManagerSrc : MonoBehaviour
 
         GameObject cardGO = Instantiate(CardPref, hand, false);
 
-        if (hand == EnemyHand) {
+        if (hand == EnemyHand)
+        {
             cardGO.GetComponent<CardGiven>().HideCardInfo(card);
         }
         else
+        {
+            a += 150;
+            previewInGame = Instantiate(preview, new Vector3(a, b, c), transform.rotation = Quaternion.identity);
+            previewInGame.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);
+            previewInGame.GetComponent<Image>().sprite = card.Logo;
+            Destroy(previewInGame, 3f);
             cardGO.GetComponent<CardGiven>().ShowCardInfo(card);
-
+        }
         deck.RemoveAt(0);
     }
     public void ChangeTurn()
@@ -119,6 +129,7 @@ public class GameManagerSrc : MonoBehaviour
             {
                 turnTimeTxt.text = turnTime.ToString();
                 yield return new WaitForSeconds(1);
+                
             } 
         }
         ChangeTurn();

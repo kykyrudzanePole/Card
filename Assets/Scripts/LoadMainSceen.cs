@@ -8,13 +8,15 @@ public class LoadMainSceen : MonoBehaviour
 {
     public Button startGameButton;
 
+
     void Start()
     {
-        startGameButton.onClick.AddListener(startGame);    
+        startGameButton.onClick.AddListener(startGame);
     }
 
     public void startGame()
     {
         SceneManager.LoadScene("MainScene");
     }
+
 }

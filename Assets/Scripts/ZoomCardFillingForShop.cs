@@ -21,7 +21,7 @@ public class ZoomCardFillingForShop : MonoBehaviour
         {
             foreach (Card element in CardManager.AllCards)
             {
-                if (element.Logo == ZoomCardInShop.ZoomLogo)
+                if (element.ID == ZoomCardInShop.ID)
                 {
                     Thp.text = element.HP.ToString();
                     TDef.text = element.Defense.ToString();
