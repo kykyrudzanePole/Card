@@ -32,7 +32,7 @@ public class ZoomCardFillingForShop : MonoBehaviour
                     Logo.sprite = element.Logo;
                     var tempColor = Logo.color;
                     tempColor.a = 255f;
-                    Logo.color = Hp.color = Defense.color = Attack.color = Defense.color = Leader.color = Cost.color = Upkeep.color = Skills.color = tempColor;
+                    Logo.color = Hp.color = Defense.color = Attack.color = Defense.color = Leader.color = Cost.color = Upkeep.color = tempColor;
                 }
             }
         }
@@ -42,7 +42,7 @@ public class ZoomCardFillingForShop : MonoBehaviour
             var tempColor = Logo.color;
             tempColor.a = 0f;
             Thp.text = TDef.text = Tattack.text = Tlead.text = Tcost.text = Tupkeep.text = " ";
-            Logo.color = Hp.color = Defense.color = Attack.color = Defense.color = Leader.color = Cost.color = Upkeep.color = Skills.color = tempColor;
+            Logo.color = Hp.color = Defense.color = Attack.color = Defense.color = Leader.color = Cost.color = Upkeep.color =  tempColor;
         }
     }
 }

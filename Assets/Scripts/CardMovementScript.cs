@@ -14,7 +14,7 @@ public class CardMovementScript : MonoBehaviour, IBeginDragHandler, IDragHandler
     public Image temp;
     public ZoomCardFilling zoomCardFilling;
     public bool IsDraggable;
-    GameManagerSrc GameManager;
+    public GameManagerSrc GameManager;
 
     void Start()
     {

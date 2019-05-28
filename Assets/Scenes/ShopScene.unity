@@ -5315,6 +5315,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZoomCard
       objectReference: {fileID: 0}
+    - target: {fileID: 5696378307063447271, guid: 2f1c34fe5f20aab48b3ed24fcc1138d3,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5817772272877709661, guid: 2f1c34fe5f20aab48b3ed24fcc1138d3,
         type: 3}
       propertyPath: m_FontData.m_FontSize
