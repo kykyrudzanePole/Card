@@ -34,7 +34,9 @@ public class GameManagerSrc : MonoBehaviour
 {
     public Game CurrentGame;
     public Transform EnemyHand, PlayerHand,
-                     EnemyFirstField, EnemySecondField;
+                     EnemyFirstField, EnemySecondField,
+                     PlayerFirstField, PlayerFirstField;
+                     
     public GameObject CardPref;
     int turn, turnTime = 30;
 
