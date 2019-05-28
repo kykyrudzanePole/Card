@@ -60,9 +60,11 @@ public class ZoomCardFilling : MonoBehaviour
     {
         if (CardMovementScript.flag)
         {
-            foreach (Card element in CardManager.AllCards)
+            foreach (Card element in ChosenCards.selectedCards)
             {
-                if (element.Logo == CardMovementScript.ZoomLogo)
+                Debug.Log(element.ID);
+                Debug.Log("CardMovementScriptID:" + CardMovementScript.id);
+                if (element.ID == CardMovementScript.id)
                 {
                     Thp.text = element.HP.ToString();
                     TDef.text = element.Defense.ToString();

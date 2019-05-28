@@ -29,28 +29,76 @@ public class AnimationAttack : MonoBehaviour, IPointerClickHandler
     public static bool flag2 = false;
     public static bool attacked = false;
     public static int timer;
+    public static string whoAttack;
+    public static string ID;
+    public static string changeHp;
+    public static List<Card> tempAttackCard = new List<Card>();
+
     public void OnPointerClick(PointerEventData eventData)
     {
+            if (click == 0 && (bullet.transform.parent.name == "firstLine" || bullet.transform.parent.name == "secondLine"))
+            {
+                if (bullet.transform.parent.name == "firstLine")
+                {
+                    whoAttack = "Melee";
+                }
+                else
+                {
+                    whoAttack = "Missile";
+                }
+                bullet.GetComponent<Image>().sprite = null;
+                Debug.Log("0");
+                clone = Instantiate(bullet, new Vector3(500, -150, 0), Quaternion.identity);
+                clone.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+                clone.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);
+                clone.tag = "enemyCards";
+                flag1 = true;
 
-        if(click == 0) {
-            bullet.GetComponent<Image>().sprite = null;
-            Debug.Log("0");
-            clone = Instantiate(bullet, new Vector3(500, -150, 0), Quaternion.identity);
-            clone.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
-            clone.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform,true);
-            clone.tag = "enemyCards";
-            flag1 = true;
+            }
+            if (whoAttack == "Melee")
+            {
+                if (click == 1 && (bullet.transform.parent.name == "EfirstLine"))
+                {
+                    Debug.Log("1");
+                    clone2 = Instantiate(bullet, new Vector3(500, 700, 0), Quaternion.identity);
+                    clone2.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+                    clone2.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);
+                    clone2.tag = "enemyCards";
+                    flag2 = true;
+                tempAttackCard.Add(new Card(bullet.GetComponent<CardGiven>().ID, bullet.GetComponent<CardGiven>().Name,
+                                            bullet.GetComponent<CardGiven>().LogoPath, bullet.GetComponent<CardGiven>().HP,
+                                            bullet.GetComponent<CardGiven>().Defense, bullet.GetComponent<CardGiven>().Attack,
+                                            bullet.GetComponent<CardGiven>().Leader, bullet.GetComponent<CardGiven>().Cost,
+                                            bullet.GetComponent<CardGiven>().Upkeep, bullet.GetComponent<CardGiven>().Status));
+                Debug.Log(tempAttackCard[0].ID);
+                GameManagerSrc.Change(tempAttackCard[0]);
+            }
+            else { click = 0; }
+            }
+            else
+            {
+                if ((click == 1 && (bullet.transform.parent.name == "EsecondLine")))
+                {
+                    Debug.Log("1");
+                    clone2 = Instantiate(bullet, new Vector3(500, 700, 0), Quaternion.identity);
+                    clone2.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+                    clone2.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);
+                    clone2.tag = "enemyCards";
+                    flag2 = true;
+                    tempAttackCard.Add(new Card(bullet.GetComponent<CardGiven>().ID, bullet.GetComponent<CardGiven>().Name,
+                                            bullet.GetComponent<CardGiven>().LogoPath, bullet.GetComponent<CardGiven>().HP,
+                                            bullet.GetComponent<CardGiven>().Defense, bullet.GetComponent<CardGiven>().Attack,
+                                            bullet.GetComponent<CardGiven>().Leader, bullet.GetComponent<CardGiven>().Cost,
+                                            bullet.GetComponent<CardGiven>().Upkeep, bullet.GetComponent<CardGiven>().Status));
 
-        }
-        if (click == 1) {
-            Debug.Log("1");
-            clone2 = Instantiate(bullet, new Vector3(500, 700, 0), Quaternion.identity);
-            clone2.transform.localScale = new Vector3(0.35f, 0.35f,0.35f);
-            clone2.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);            
-            clone2.tag = "enemyCards";
-            flag2 = true;
-        }
-        click++;
+                    GameManagerSrc.Change(tempAttackCard[0]);
+            }
+            else
+                {
+                     click = 0;
+                }
+            }
+            click++;
     }
 
 
@@ -76,7 +124,10 @@ public class AnimationAttack : MonoBehaviour, IPointerClickHandler
         cloneExplosion.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);
         Destroy(clone);
         Destroy(clone2);
-
+        click = 0;
+        flag1 = false;
+        flag2 = false;
+        attacked = false;
     }
     
     private void Update()

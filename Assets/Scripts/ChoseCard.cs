@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public static class ChosenCards
 {
     public static List<Card> selectedCards = new List<Card>();
+    public static List<Card> copySelectedCards = new List<Card>();
 }
 public class ChoseCard : MonoBehaviour, IPointerClickHandler
 {
@@ -26,8 +27,11 @@ public class ChoseCard : MonoBehaviour, IPointerClickHandler
                 ChosenCards.selectedCards.Add(new Card(element.ID, element.Name, element.LogoPath, element.HP, 
                                         element.Defense, element.Attack, element.Leader, element.Cost, 
                                         element.Upkeep, element.Status));
+                ChosenCards.copySelectedCards.Add(new Card(element.ID, element.Name, element.LogoPath, element.HP,
+                                        element.Defense, element.Attack, element.Leader, element.Cost,
+                                        element.Upkeep, element.Status));
 
-            var tempColor = Hp.color;
+                var tempColor = Hp.color;
             tempColor.a = 0f;
             Hp.color = Defense.color = Attack.color = Leader.color = Cost.color = Upkeep.color = Skills.color = tempColor;
             Thp.text = TDef.text = Tattack.text = Tlead.text = Tcost.text = Tupkeep.text = " ";

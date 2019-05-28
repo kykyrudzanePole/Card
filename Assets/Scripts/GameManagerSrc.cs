@@ -7,7 +7,7 @@ using TMPro;
 public class Game
 {
     public List<Card> EnemyDeck, PlayerDeck;
-                      
+    public int Rand = 0;        
 
     public Game ()
     {
@@ -19,8 +19,13 @@ public class Game
     {
         List<Card> list = new List<Card>();
 
-        for (int i = 0; i < 10; i++)
-            list.Add(ChosenCards.selectedCards[Random.Range(0, ChosenCards.selectedCards.Count)]);
+        for (int i = 0; i < 3; i++)
+        {
+            Rand = Random.Range(0, ChosenCards.copySelectedCards.Count);
+            list.Add(ChosenCards.copySelectedCards[Rand]);
+            ChosenCards.copySelectedCards.RemoveAt(Rand);
+            Rand = 0;
+        }
         return list;
     }
 }
@@ -40,7 +45,9 @@ public class GameManagerSrc : MonoBehaviour
 
     public GameObject preview;
     public GameObject previewInGame;
-    public static int a = 300, b = 250, c = 0;
+    public static int a = 350, b = 250, c = 0;
+
+    public static GameManagerSrc GMS;
 
     public List<CardGiven> PlayerHandCards = new List<CardGiven>(),
                              PlayerFieldCards = new List<CardGiven>(),
@@ -61,6 +68,7 @@ public class GameManagerSrc : MonoBehaviour
     {
         turn = 0;
         CurrentGame = new Game();
+        GMS = new GameManagerSrc();
         GiveHandCards(CurrentGame.EnemyDeck, EnemyHand);
         GiveHandCards(CurrentGame.PlayerDeck, PlayerHand);
 
@@ -70,7 +78,7 @@ public class GameManagerSrc : MonoBehaviour
     void GiveHandCards(List<Card> deck, Transform hand)
     {
         int i = 0;
-        while (i++ < 3)
+        while (i++ < 5)
             GiveCardToHand(deck, hand);
     }
 
@@ -125,6 +133,7 @@ public class GameManagerSrc : MonoBehaviour
     void GiveNewCard()
     {
         GiveCardToHand(CurrentGame.EnemyDeck, EnemyHand);
+        a = 350;
         GiveCardToHand(CurrentGame.PlayerDeck, PlayerHand);
     }
 
@@ -178,6 +187,32 @@ public class GameManagerSrc : MonoBehaviour
 
             EnemyFieldCards.Add(cards[0]);
             EnemyHandCards.Remove(cards[0]);
+        }
+    }
+    public static void Change(Card card)
+    {
+        Debug.Log("Im HERE");
+        /*
+        foreach(Card element in ChosenCards.selectedCards)
+        {
+            Debug.Log("Element ID:" + element.ID + "card ID" + card.ID);
+            if(element.ID == AnimationAttack.tempAttackCard[0].ID)
+            {
+                element.HP = 50;
+                for(int i = 0; i < GMS.EnemyFieldCards.Count; i++)
+                {
+                    Debug.Log(GMS.EnemyFieldCards[i].ID);
+                }
+            }
+        }
+        */
+        for(int i = 0; i < ChosenCards.selectedCards.Count;i++) {
+            if(ChosenCards.selectedCards[i].ID == card.ID)
+            {
+                var Temp = ChosenCards.selectedCards[i];
+                Temp.HP += 10;
+                ChosenCards.selectedCards[i] = Temp;
+            }
         }
     }
 }

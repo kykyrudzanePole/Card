@@ -15,6 +15,7 @@ public class CardMovementScript : MonoBehaviour, IBeginDragHandler, IDragHandler
     public ZoomCardFilling zoomCardFilling;
     public bool IsDraggable;
     public GameManagerSrc GameManager;
+    public static int id;
 
     void Start()
     {
@@ -100,6 +101,7 @@ public class CardMovementScript : MonoBehaviour, IBeginDragHandler, IDragHandler
     
     public void OnPointerEnter(PointerEventData eventData)
     {
+        id = GetComponent<CardGiven>().ID;
         flag = true;
         temp = transform.GetChild(0).GetComponentInChildren<Image>();
         ZoomLogo = temp.sprite;
